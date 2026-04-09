@@ -1,23 +1,641 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "차량임대 완벽 가이드: 장기렌트, 리스 최저가 비교",
+      "url": "https://yourdomain.com/vehicle-rental-guide",
+      "description": "2026년 최신 장기렌트와 리스 비교 분석. 월 납입금 견적, 초기 비용 절감 혜택, 신규 가입 사은품, 전문 업체 순위 등 차량 임대에 필요한 모든 정보를 담고 있습니다.",
+      "mainEntity": {
+        "@type": "HowTo",
+        "name": "현명하게 차량 임대하는 5단계 절차",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "장기렌트 vs. 리스 유형 선택",
+            "text": "차량 소유권, 보험 가입 여부, 번호판, 세금 혜택 등 본인의 상황에 맞는 임대 유형을 결정합니다."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "신차 및 중고차 견적 비교",
+            "text": "원하는 차량 모델(예: 쏘나타, G80, 싼타페)을 정한 후, 여러 렌트/리스 업체에 견적을 요청하여 월 임대료와 조건을 비교합니다."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "초기 비용 및 부대 비용 검토",
+            "text": "보증금, 선납금, 취등록세, 보험료 등 총 비용을 확인하고 초기 비용이 저렴한 곳을 찾습니다."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "할인 및 사은품 혜택 확인",
+            "text": "신규 가입 이벤트, 제휴 할인, 현금지원, 사은품 등 추가 혜택을 꼼꼼히 확인하여 최종 혜택을 극대화합니다."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "계약 조건 및 만기 시점 결정",
+            "text": "계약 기간, 연간 주행거리 제한, 중도 해지 위약금, 만기 시 인수/반납/재리스 조건을 정하고 계약을 체결합니다."
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- Pexels 이미지 출처: https://www.pexels.com/ko-kr/photo/210019/ (CC0 라이선스) -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+        :root {
+            --primary-color: #007bff; /* 신뢰감 있는 블루 */
+            --secondary-color: #f7a072; /* 따뜻한 강조색 */
+            --accent-color: #28a745; /* 긍정적인 초록색 */
+            --background-light: #f8f9fa;
+            --text-dark: #343a40;
+            --text-light: #ffffff;
+            --border-color: #dee2e6;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            font-size: 16px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 3rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            margin: 0.5rem 0 0.2rem;
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background-color: white;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary-color); /* 부드러운 시작점 */
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            color: var(--accent-color);
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-left: 10px;
+        }
+
+        .cta-button {
+            display: block;
+            background-color: var(--secondary-color);
+            color: white;
+            font-weight: 700;
+            padding: 1.2rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            background-color: #e67e5a;
+            transform: translateY(-2px);
+        }
+        
+        /* 테이블 스타일 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f1f1f1; /* 부드러운 배경색 */
+            color: var(--text-dark);
+            font-weight: 700;
+            text-align: center;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #fcfcfc;
+        }
+
+        /* 키워드 태그 스타일 */
+        .keyword-tags {
+            margin: 1.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .keyword-tags span {
+            background-color: #e9ecef;
+            color: var(--text-dark);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* FAQ 스타일 */
+        .faq-item {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background-color: #e9ecef;
+            color: var(--text-dark);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #dfe4e8;
+        }
+
+        .faq-answer {
+            padding: 1rem 1.5rem;
+            background-color: #ffffff;
+            border-top: 1px solid var(--border-color);
+            display: none;
+        }
+
+        .faq-question:after {
+            content: '+';
+            position: absolute;
+            right: 1.5rem;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-question.active:after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+
+        /* 폼 스타일 */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+        
+        /* 외부 링크 스타일 */
+        .external-links a {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .external-links a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            background-color: var(--primary-color);
+            margin-top: 3rem;
+        }
+        
+        /* 그래프 스타일 (새로운 디자인) */
+        .graph-container {
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: #f0f4f8;
+            border-radius: 10px;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .graph-item {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .graph-label {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .graph-bar {
+            background-color: #c7d2e4;
+            border-radius: 5px;
+            height: 30px;
+            position: relative;
+        }
+
+        .graph-value {
+            height: 100%;
+            background-color: var(--accent-color);
+            border-radius: 5px;
+            transition: width 1s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto 2rem;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>차량임대 완벽 가이드 🔑</h1>
+        <p>현명한 장기렌트, 리스 비교 전략으로 **차량 임대 비용**을 최적화하세요. 2026년 최신 정보 반영!</p>
+        <nav>
+            <ul>
+                <li><a href="#rental-lease-diff">렌트 vs. 리스</a></li>
+                <li><a href="#cost-benefit">비용 분석 및 혜택</a></li>
+                <li><a href="#comparison-strategy">비교 견적 전략</a></li>
+                <li><a href="#simulation">견적 시뮬레이션</a></li>
+                <li><a href="#faq">자주 묻는 질문</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <!-- Pexels 이미지 (차량 임대 관련 이미지) -->
+        <div class="image-container">
+            <img src="https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="차량 열쇠를 전달하는 이미지">
+        </div>
+
+        <section id="rental-lease-diff">
+            <h2>필수 이해: 장기렌트와 리스의 근본적인 차이점</h2>
+            <p>**차량임대** 시장이 2026년에도 꾸준히 성장하고 있습니다. 특히 신차 구매에 대한 초기 비용 부담이 커지면서, **장기렌트**와 **리스**가 합리적인 대안으로 각광받고 있습니다. 이 두 가지 방식은 차량을 일정 기간 동안 빌려 탄다는 점은 유사하지만, **법적 성격**과 **세금 처리** 등에서 큰 차이를 보입니다. 현명한 **차량임대**를 위해서는 이 차이점을 명확히 이해해야 합니다.</p>
+
+            <h3>1. 장기렌트의 특징: 편리한 '순수 임대' 방식</h3>
+            <p>**장기렌트**는 렌터카 업체가 차량을 구매하여 소비자에게 빌려주는 **임대 상품**입니다. 이 방식의 **장점**은 초기 비용 부담이 거의 없다는 것입니다. 렌트료에 취등록세, 자동차세, 보험료가 모두 포함되어 있어 매월 정해진 **월 납입금**만 지불하면 됩니다. 또한, 사고가 발생해도 렌터카 업체의 보험을 사용하므로 개인의 보험료가 할증되지 않아 초보 운전자나 사고 이력이 많은 분들에게 **추천**됩니다.</p>
+            <ul>
+                <li><strong>차량 소유:</strong> 렌터카 업체 명의</li>
+                <li><strong>번호판:</strong> '하', '허', '호' 번호판 사용 (최근에는 인식이 개선되어 단점이 아닌 경우가 많음)</li>
+                <li><strong>보험료:</strong> 렌트사 보험 사용 (개인 보험 경력 단절)</li>
+                <li><strong>세금 처리:</strong> 월 렌트료 전액을 비용으로 처리 가능 (사업자에게 유리)</li>
+            </ul>
+            <p><strong>내돈내산 후기</strong>를 보면, 차량 관리를 업체에 맡기고 싶은 분들, 특히 사회 초년생이나 **운전 경력이 짧아 보험료가 비싼** 분들이 장기렌트를 선호하는 경향이 있습니다. **장기렌트 가격**을 비교할 때는 정비 포함 여부와 면책금 조항을 확인하는 것이 중요합니다.</p>
+
+            <h3>2. 리스의 특징: 금융 상품에 가까운 '자산 운용' 방식</h3>
+            <p>**리스**는 캐피탈이나 금융사가 고객을 대신해 차량을 구매하고, 고객에게 사용권을 부여하는 **금융 상품**입니다. **리스**는 일반 자가용과 동일한 번호판을 사용하기 때문에 외관상 **장기렌트**와 차이가 없습니다. **장점**으로는 만기 시 차량을 인수할 수도 있고 반납할 수도 있어 선택의 폭이 넓습니다. 또한, **개인 보험 경력**을 그대로 유지할 수 있습니다.</p>
+            <ul>
+                <li><strong>차량 소유:</strong> 리스사 명의 (이용자가 자가용처럼 관리)</li>
+                <li><strong>번호판:</strong> 일반 번호판 사용 (차량임대 티가 나지 않음)</li>
+                <li><strong>보험료:</strong> 이용자 개인 보험 가입 (개인 보험 경력 유지)</li>
+                <li><strong>세금 처리:</strong> 감가상각비와 이자 비용을 비용으로 처리 (사업자 절세 효과)</li>
+            </ul>
+            <p>리스는 **신용 등급**이 높은 개인 사업자나 법인에게 유리하며, **장기렌트 단점** 중 하나인 번호판 제약이 없다는 것이 큰 메리트입니다. 하지만 **신규 가입** 시 개인의 보험료율을 적용받기 때문에 사고 이력이 있다면 **리스 비용**이 오히려 증가할 수 있습니다. **차량 리스 비교** 시에는 **견적**에 포함된 금리(이자 비용)를 면밀히 살펴봐야 합니다.</p>
+
+            <h3>📊 장기렌트 vs. 리스 핵심 차이점 요약표</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>장기렌트 (임대)</th>
+                        <th>자동차 리스 (금융)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>차량 번호판</strong></td>
+                        <td>'하', '허', '호' (렌터카 전용)</td>
+                        <td>일반 번호판 (개인 자가용과 동일)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>보험 가입 주체</strong></td>
+                        <td>렌트 회사 (보험 경력 단절)</td>
+                        <td>이용자 개인 (보험 경력 유지)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>초기 비용</strong></td>
+                        <td>보증금/선납금 선택 가능 (무보증도 가능)</td>
+                        <td>보증금 필수 또는 선택</td>
+                    </tr>
+                    <tr>
+                        <td><strong>사고 시 처리</strong></td>
+                        <td>면책금만 납부 (보험료 할증 없음)</td>
+                        <td>개인 보험 처리 (보험료 할증 가능성 있음)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>주행거리 제한</strong></td>
+                        <td>상대적으로 여유로움 (무제한 옵션도 존재)</td>
+                        <td>주행거리 제한이 더 엄격함 (초과 시 위약금)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <section id="cost-benefit">
+            <h2>비용 절감 핵심 분석: 세금 혜택 및 숨겨진 비용 파헤치기</h2>
+            <p>많은 소비자들이 **차량임대**를 선택하는 가장 큰 이유는 **비용 절감**입니다. 단순히 월 납입금의 **평균 금액**만 보고 결정해서는 안 됩니다. **장기렌트**와 **리스** 모두 사업자에게 절세 혜택을 제공하며, 일반 구매 시 발생하는 취등록세, 자동차세 등을 따로 납부할 필요가 없습니다. 2026년 기준으로 달라진 세금 공제 한도와 혜택을 꼼꼼히 확인하여 최종 **비용**을 산출해야 합니다.</p>
+
+            <h3>1. 세금 혜택: 사업자에게 유리한 절세 전략</h3>
+            <p>개인 사업자나 법인이라면 **장기렌트**나 **리스**를 통해 상당한 절세 효과를 볼 수 있습니다. **장기렌트**의 경우 월 렌트료 전액을 손비 처리할 수 있으며, 특히 **리스**는 금융 상품의 특성상 감가상각비, 이자 비용 등을 포함하여 비용 처리를 할 수 있습니다. 2026년 세법 기준으로는 업무용 승용차 관련 비용 처리 한도가 설정되어 있으므로, <strong>견적</strong>을 받을 때 회계 처리 방식에 따른 **장단점**을 반드시 확인해야 합니다.</p>
+
+            <h3>2. 초기 비용 절감: 보증금 vs. 선납금</h3>
+            <p><strong>신규 가입</strong>을 할 때 **장기렌트**와 **리스** 모두 보증금이나 선납금을 활용하여 월 납입금을 낮출 수 있습니다. **보증금**은 계약 만기 시 돌려받는 금액이며, **선납금**은 계약 기간 동안의 월 납입금을 미리 납부하여 월 납입금 **금액** 자체를 낮추는 방식입니다. 초기 비용이 부담된다면 **무보증** 옵션을 선택할 수도 있습니다. **장기렌트**는 특히 초기 비용 부담이 적은 **장점**이 있어, 목돈 지출을 꺼리는 소비자에게 **추천**됩니다.</p>
+            <p>만약 현금 여유가 있다면 보증금/선납금을 높여서 월 납입금을 낮추는 것이 전체 **비용** 측면에서 유리합니다. **현금지원**이나 **사은품** 이벤트는 보통 초기 비용이 높은 상품을 계약할 때 더 많은 **혜택**이 제공되기도 하므로, **내돈내산** 후기를 참고하여 종합적으로 고려하는 것이 좋습니다.</p>
+
+            <h3>3. 예상 비용 시뮬레이션: 월 렌트료 구성 요소</h3>
+            <p><strong>장기렌트 가격</strong>은 단순히 차량 가격만을 기준으로 하지 않습니다. 월 렌트료에는 차량 가격 외에 1) 취등록세, 2) 자동차세, 3) 보험료, 4) 정비 옵션 비용, 5) 렌트 회사 마진이 모두 포함되어 있습니다. **장기렌트**는 보험료가 포함되어 있어, 특히 운전 경력이 짧아 **보험료**가 비싼 20~30대 운전자에게 **저렴한곳**이 될 수 있습니다.</p>
+            <p>반면, **리스 비용**은 개인의 신용 등급과 보험료율에 따라 월 납입금이 크게 달라집니다. **장기렌트**와 **리스**를 비교할 때, **전문 업체**의 **견적**을 받아 월 납입금 **평균**을 비교해 보는 것이 필수입니다. **2026년** 시장에서는 전기차(EV) **장기렌트** 상품의 **할인** 및 **보조금** 혜택도 커지고 있어, 친환경차를 고려하는 소비자에게 더 좋은 **혜택**이 제공되고 있습니다.</p>
+        </section>
+
+        <hr>
+
+        <section id="comparison-strategy">
+            <h2>최저가 견적 찾는 법: 현명한 비교 전략과 함정 피하기</h2>
+            <p>**차량임대** 시장은 경쟁이 치열하여 업체별 **가격** 차이가 상당합니다. 동일한 차량 모델(예: 싼타페, G80, K5)이라도 <strong>장기렌트 견적</strong>이나 **리스 견적**이 수십만 원 이상 차이 날 수 있습니다. **최저가**를 찾기 위해서는 단순히 **월 납입금**만 비교할 것이 아니라, 전체 **비용**과 숨겨진 **단점**을 모두 파악해야 합니다.</p>
+
+            <h3>1. 견적 비교 시 핵심 체크리스트</h3>
+            <p><strong>장기렌트</strong>나 **리스** **견적**을 비교할 때 다음 5가지 요소를 반드시 확인해야 합니다.</p>
+            <ol>
+                <li><strong>계약 기간:</strong> 일반적으로 계약 기간이 길수록 월 납입금은 낮아집니다. (예: 36개월 vs. 48개월 vs. 60개월). 하지만 중도 해지 시 **위약금**이 커질 수 있으므로 신중하게 결정해야 합니다.</li>
+                <li><strong>주행거리 제한:</strong> 연간 주행거리(예: 1만 km, 2만 km, 무제한)에 따라 **가격**이 달라집니다. 주행거리를 초과하면 **추가 비용**이 발생하므로 자신의 운전 습관에 맞는 옵션을 선택해야 합니다.</li>
+                <li><strong>정비 옵션:</strong> 렌트/리스 업체가 제공하는 정비 서비스 수준에 따라 월 납입금이 달라집니다. (포함 vs. 불포함). **신규 가입** 시 정비 옵션의 **장단점**을 비교하세요.</li>
+                <li><strong>만기 시점 처리:</strong> 계약 만기 시 차량을 인수할지, 반납할지, 재리스할지 선택할 수 있습니다. **장기렌트**의 경우 인수 시점에 잔존가치와 인수 **비용**을 확인해야 합니다.</li>
+                <li><strong>초기 비용 설정:</strong> 보증금, 선납금 유무에 따라 월 납입금이 달라집니다. 초기 **금액**에 따라 총 납입금이 어떻게 달라지는지 시뮬레이션 해봐야 합니다.</li>
+            </ol>
+
+            <h3>2. **전문 업체** 선정 방법: **순위**보다 **혜택**과 **후기**</h3>
+            <p><strong>차량임대 전문 업체</strong>는 대형 렌터카사(롯데렌터카, SK렌터카 등)와 캐피탈사(현대캐피탈, KB캐피탈 등)로 나뉩니다. <strong>내돈내산 후기</strong>나 **유튜브** 리뷰를 보면, 대형 업체는 **사은품**이나 **현금지원** 혜택이 넉넉하고 신뢰성이 높다는 **장점**이 있습니다. 중소형 **전문 업체**는 **가격** 경쟁력이 높지만, 계약 조건이나 **신규 가입 혜택**이 다를 수 있습니다. **AI 챗봇**인 **ChatGPT**나 **Gemini**를 활용하여 여러 업체의 **장단점**을 비교하거나 **네이버**나 **구글** 검색으로 **디시** 등의 커뮤니티 **후기**를 참고하는 것도 좋은 방법입니다. <strong>2026년</strong> **AI**가 분석한 데이터 기반의 견적 비교 **순위** 정보도 많이 활용됩니다.</p>
+
+            <h3>3. 주의사항: 숨겨진 **위약금**과 **할인**의 함정</h3>
+            <p><strong>차량임대</strong> 계약은 장기간 이루어지므로 중도 해지 시 **위약금** 규정을 반드시 확인해야 합니다. 계약서에 명시된 위약금은 남은 월 납입금의 일정 비율(예: 30~40%)로 계산되므로, 예상치 못한 **비용**이 발생할 수 있습니다. 또한, **할인**이나 **사은품**을 과도하게 강조하는 **전문 업체**는 월 납입금에 이 <strong>혜택</strong> **비용**을 포함시켜 놓은 경우가 많으므로, 총 납입금 **금액**을 기준으로 비교하는 것이 현명합니다.</p>
+
+            <h3>📈 차량임대 결정 요인 분석 그래프 (가상 데이터)</h3>
+            <div class="graph-container">
+                <p><strong>소비자 유형별 장기렌트/리스 선택 이유 (가상 데이터)</strong></p>
+                <div class="graph-item">
+                    <div class="graph-label">초기 비용 절감</div>
+                    <div class="graph-bar"><div class="graph-value" style="width: 85%;">85%</div></div>
+                </div>
+                <div class="graph-item">
+                    <div class="graph-label">차량 관리 편의성</div>
+                    <div class="graph-bar"><div class="graph-value" style="width: 70%;">70%</div></div>
+                </div>
+                <div class="graph-item">
+                    <div class="graph-label">세금 절세 혜택</div>
+                    <div class="graph-bar"><div class="graph-value" style="width: 60%;">60%</div></div>
+                </div>
+                <div class="graph-item">
+                    <div class="graph-label">신차 교체 용이성</div>
+                    <div class="graph-bar"><div class="graph-value" style="width: 45%;">45%</div></div>
+                </div>
+            </div>
+            <p>위 그래프는 **차량임대**를 결정하는 주요 요인으로 초기 **비용 절감**이 가장 큰 비중을 차지함을 보여줍니다. **장기렌트**는 **초기 비용** 부담이 없어 현명한 **선택**으로 인식되고 있습니다.</p>
+        </section>
+
+        <hr>
+
+        <section id="simulation">
+            <h2>🚗 내 차량 임대 예상 견적 시뮬레이션</h2>
+            <p>**차량임대**를 결정하기 전에 예상 월 납입금과 조건을 직접 설정해보세요. 이 시뮬레이션은 사용자의 니즈에 맞는 **차량임대** 조건을 파악하여 맞춤형 정보를 제공합니다. (**실제 견적은 전문 업체에 요청해야 합니다.**)</p>
+
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="car-model">원하는 차량 모델 및 등급:</label>
+                    <input type="text" id="car-model" name="car-model" placeholder="예: 2026년식 쏘나타 프리미엄, 싼타페 하이브리드" required>
+                </div>
+                <div class="form-group">
+                    <label for="rental-type">임대 유형 (장기렌트 vs. 리스):</label>
+                    <select id="rental-type" name="rental-type" required>
+                        <option value="">선택</option>
+                        <option value="longterm-rental">장기렌트</option>
+                        <option value="lease">자동차 리스</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="period">계약 기간 (개월):</label>
+                    <select id="period" name="period" required>
+                        <option value="">선택</option>
+                        <option value="36">36개월</option>
+                        <option value="48">48개월</option>
+                        <option value="60">60개월</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mileage">예상 연간 주행거리 (km):</label>
+                    <select id="mileage" name="mileage" required>
+                        <option value="">선택</option>
+                        <option value="10000">1만 km</option>
+                        <option value="20000">2만 km</option>
+                        <option value="30000">3만 km</option>
+                        <option value="unlimited">무제한 (추가 비용 발생)</option>
+                    </select>
+                    <small>주행거리가 짧을수록 **장기렌트 가격**이 낮아집니다.</small>
+                </div>
+                <div class="form-group">
+                    <label for="deposit-type">초기 비용 설정 (보증금/선납금):</label>
+                    <select id="deposit-type" name="deposit-type" required>
+                        <option value="">선택</option>
+                        <option value="none">초기 비용 없음 (무보증)</option>
+                        <option value="deposit">보증금 설정</option>
+                        <option value="prepayment">선납금 설정</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="service-option">정비 서비스 옵션:</label>
+                    <input type="radio" id="service-included" name="service-option" value="included"> <label for="service-included" style="display:inline;">포함 (정비 포함 <strong>견적</strong>)</label>
+                    <input type="radio" id="service-excluded" name="service-option" value="excluded" checked> <label for="service-excluded" style="display:inline;">불포함 (자가 정비)</label>
+                </div>
+                <button type="submit" class="cta-button">맞춤 견적 비교 요청</button>
+            </form>
+            <p><strong>참고:</strong> 위 정보는 사용자 맞춤형 **차량임대** 정보를 제공하기 위한 기초 자료로 사용됩니다. 정확한 **견적**은 여러 **전문 업체**의 **가격** 비교 서비스를 이용해야 합니다.</p>
+        </section>
+
+        <hr>
+
+        <section id="faq">
+            <h2>자주 묻는 질문 (FAQ) - 차량임대</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">Q: 장기렌트 계약 만기 후 차량 인수 시 **비용**은 어떻게 계산되나요?</div>
+                    <div class="faq-answer">A: **장기렌트** 계약 만기 시 차량을 인수하려면, 계약 시 설정한 **잔존가치**를 지불해야 합니다. 잔존가치는 예상되는 만기 시점의 차량 가치를 의미하며, 이 **금액**이 높을수록 월 납입금은 낮아지지만 인수 시 지불할 **비용**은 커집니다. **내돈내산 후기**나 **전문 업체** 상담을 통해 자신의 상황에 맞는 잔존가치를 설정하는 것이 중요합니다.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q: **장기렌트**나 **리스** 이용 시 개인 신용 등급에 영향을 주나요?</div>
+                    <div class="faq-answer">A: **장기렌트**는 렌터카 업체와의 임대 계약으로, 일반적으로 개인의 신용 등급에 직접적인 영향을 주지 않습니다. 하지만 **리스**는 금융 상품의 성격이 강하여 대출 한도에 포함되거나 신용도에 영향을 미칠 수 있습니다. **신규 가입** 시 본인의 신용 상태를 고려하여 **장단점**을 비교해야 합니다.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q: 중고차 **장기렌트**나 **리스**도 **신규 가입**이 가능한가요?</div>
+                    <div class="faq-answer">A: 네, 가능합니다. **장기렌트**나 **리스**는 신차뿐만 아니라 중고차 상품도 활발하게 제공됩니다. 중고차 **장기렌트**의 **장점**은 신차 대비 월 납입금이 **저렴한곳**이 많고, 즉시 출고가 가능하다는 점입니다. **가격** **비교** 시 신차와 중고차 상품을 모두 확인하는 것이 현명합니다.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q: **장기렌트**를 하면 운전 경력으로 인정받을 수 없나요?</div>
+                    <div class="faq-answer">A: 맞습니다. **장기렌트**는 렌트 업체 명의의 보험에 가입하기 때문에 이용자 개인의 **보험 경력**이 단절됩니다. 이로 인해 계약 만기 후 개인 명의로 차량을 구매할 때 보험료가 다시 비싸지는 **단점**이 있습니다. 다만 일부 업체에서는 보험 경력 인정 상품을 제공하기도 하므로, **신규 가입** 시 **전문 업체**에 문의해보세요.</div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="external-info">
+            <h2>공신력 있는 외부 정보 및 참고 사이트</h2>
+            <p>**차량임대**와 관련된 신뢰할 수 있는 정보를 제공하는 외부 기관의 자료를 참고하여 더욱 정확하고 전문적인 판단을 내리시기 바랍니다. 공신력 있는 기관의 정보를 활용하는 것은 SEO 점수 향상에도 긍정적인 영향을 미칩니다.</p>
+            <div class="external-links">
+                <a href="https://www.fss.or.kr/" target="_blank" rel="nofollow noopener">금융감독원 (FSS) - 금융 소비자 보호 정보</a>
+                <a href="https://www.kidi.or.kr/" target="_blank" rel="nofollow noopener">보험개발원 (KIDI) - 자동차보험 관련 정보 및 차량 통계</a>
+                <a href="https://www.gov.kr/main?a=AA020InfoCapCntrl&b=infoCapCntrl&id=1328900767010&seq=88" target="_blank" rel="nofollow noopener">정부24 - 자동차 등록 관련 정보</a>
+                <a href="https://www.credit.or.kr/main.jsp" target="_blank" rel="nofollow noopener">신용정보원 - 신용 등급 관리 정보</a>
+                <a href="https://namu.wiki/w/%EC%9E%A5%EA%B8%B0%EB%A0%8C%ED%8A%B8" target="_blank" rel="nofollow noopener">나무위키 - 장기렌트 상세 정보 및 장단점 분석</a>
+            </div>
+            <p>이러한 신뢰성 있는 정보들은 사용자가 **차량임대**에 대한 전문적인 이해를 높이는 데 도움을 줍니다.</p>
+        </section>
+
+        <a href="#simulation" class="cta-button" aria-label="지금 바로 내 차량 임대 예상 견적 비교하기">최저가 견적을 지금 바로 비교해보세요!</a>
     </main>
-  </body>
-</html>
+
+    <script>
+        // FAQ 아코디언 기능 (접기/펼치기)
+        document.querySelectorAll('.faq-question').forEach((question) => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.contains('active');
+
+                // 모든 FAQ 닫기
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.classList.remove('active');
+                    q.nextElementSibling.style.display = 'none';
+                });
+
+                // 클릭한 FAQ 열기/닫기
+                if (!isActive) {
+                    question.classList.add('active');
+                    answer.style.display = 'block';
+                }
+            });
+        });
+
+        // 그래프 애니메이션 효과 (로딩 후 width 적용)
+        window.onload = () => {
+            document.querySelectorAll('.graph-value').forEach(bar => {
+                const targetWidth = bar.style.width;
+                bar.style.width = '0%'; // 초기화
+                setTimeout(() => {
+                    bar.style.width = targetWidth; // 실제 값 적용
+                }, 100);
+            });
+        };
+    </script>
+  
